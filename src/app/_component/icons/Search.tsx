@@ -2,7 +2,7 @@ export default function Search(props: React.SVGProps<SVGSVGElement>) {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            id="Outline"
+            aria-label="SearchIcon"
             viewBox="0 0 24 24"
             width="32"
             height="32"

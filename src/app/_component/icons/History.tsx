@@ -2,6 +2,7 @@ export default function History(props: React.SVGProps<SVGSVGElement>) {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
+            aria-label="HistoryIcon"
             viewBox="0 0 24 24"
             width="32"
             height="32"

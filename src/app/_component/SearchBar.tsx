@@ -29,7 +29,7 @@ export default function SearchBar() {
         setSelected(item.name);
         setValue("");
 
-        router.push(`${item.name}-${item.id}`);
+        router.push(`${item.id}`);
     }
 
     return (

@@ -7,7 +7,7 @@ export async function GET(request: Request) {
     const searchValue = searchParams.get("value");
 
     if (!searchValue) {
-      return NextResponse.json({ result: [] }, { status: 400 });
+      return NextResponse.json([], { status: 400 });
     }
 
     const apiKey = process.env.WEATHER_API_KEY || "";
