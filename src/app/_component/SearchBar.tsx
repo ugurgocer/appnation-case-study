@@ -8,10 +8,12 @@ import SearchIcon from "./icons/Search";
 import ILocation from "@/lib/types/ILocation";
 import { useAppDispatch } from "@/lib/hooks/rtk";
 import { addHistoryItem } from "@/lib/store/searchHistorySlice";
+import { useRouter } from "next/navigation";
 
 export default function SearchBar() {
     const [value, setValue] = React.useState<string>("");
     const [selected, setSelected] = React.useState<string>("");
+    const router = useRouter();
 
     const searchValue = useDebounce<string>(value, 500);
     const { searchResult, isLoading } = useSearch(searchValue);
@@ -26,13 +28,15 @@ export default function SearchBar() {
         dispatch(addHistoryItem(item));
         setSelected(item.name);
         setValue("");
+
+        router.push(`${item.name}-${item.id}`);
     }
 
     return (
-        <div className="relative flex h-14 gap-2 p-3 item-border text-slate-700">
-            <SearchIcon className="h-7 w-7 fill-slate-500" />
+        <div className="relative flex flex-1 h-14 max-w-150 gap-2 p-3 item-border text-slate-700">
+            <SearchIcon className="h-7 w-7 fill-slate-600" />
             <input
-                className="flex-1 h-8 focus:outline-none"
+                className="flex-1 h-8 focus:outline-none placeholder:text-slate-600"
                 value={selected || value}
                 onInput={onChangeInput}
                 placeholder="Search a location"

@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 import searchHistoryReducer from "./searchHistorySlice";
+import metricSliceReducer from "./metricSlice";
 
 
 export const store = configureStore({
     reducer: {
-        searchHistory: searchHistoryReducer
+        searchHistory: searchHistoryReducer,
+        metric: metricSliceReducer
     },
 });
 

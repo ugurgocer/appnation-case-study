@@ -11,7 +11,7 @@ export default function LocationList({ items, isLoading=false, className="", onC
             {items.map((item) => (
                 <li
                     key={item.id}
-                    className="px-4 h-14 content-center first:rounded-t-md last:rounded-b-md hover:bg-slate-100 text-slate-600 hover:text-slate-700 cursor-pointer"
+                    className="px-4 h-14 content-center first:rounded-t-xl last:rounded-b-xl hover:bg-slate-100 text-slate-600 hover:text-slate-700 cursor-pointer"
                     onClick={() => onClickItem(item)}
                 >
                     {item.name}
