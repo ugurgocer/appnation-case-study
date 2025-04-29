@@ -1,4 +1,4 @@
-import ILocation from "@/types/ILocation";
+import ILocation from "@/lib/types/ILocation";
 
 export default async function searchLocations(searchValue: string)  {
     if (!searchValue.trim()) return [];

@@ -1,4 +1,4 @@
-import searchLocations from "@/lib/searchLocations";
+import searchLocations from "@/lib/services/searchLocations";
 import useSWRImmutable from "swr/immutable";
 
 export default function useSearch(searchValue: string) {

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import ILocation from "@/types/ILocation";
+import ILocation from "@/lib/types/ILocation";
 
 export async function GET(request: Request) {
   try {
