@@ -13,7 +13,7 @@ export default function MultipleMetricStatus(
     return (
         <div className="flex items-center justify-center">
             <span className="text-7xl h-20 w-fit content-end text-right">{data[selectedMetric]}</span>
-            <ul className="flex flex-col justify-end text-sm">
+            <ul className="flex flex-col h-20 justify-end text-sm">
                 {metrics.map((m) => (
                     <li
                         className={`cursor-pointer w-8 text-center hover:font-bold ${selectedMetric == m ? selectedClass : ''}`}
