@@ -3,7 +3,7 @@ import IWeather from "@/lib/types/IWeather";
 import { IForecastDay } from "@/lib/types/IForecastDay";
 import { IDirections } from "@/lib/types/IDirections";
 
-export async function GET(request: Request, { params }: { params: { location: string } }) {
+export async function GET(request: Request, { params }: { params: Promise<{ location: string }> }) {
   try {
     const { location: id } = await params;
 
