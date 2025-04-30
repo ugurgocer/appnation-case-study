@@ -2,8 +2,7 @@ import ICondition from "./ICondition";
 import { IDirections } from "./IDirections";
 import ITemperature from "./ITemperature";
 
-interface IWind {
-    degree: number;
+export interface IWind {
     mph: number;
     kph: number;
     dir: IDirections
@@ -14,11 +13,12 @@ export interface ICurrentWeather {
     humidity: number;
     cloud: number;
     feelsLike: ITemperature;
-    windchill: ITemperature;
     heatIndex: ITemperature;
-    dewPoint: ITemperature;
+    precip: { mm: number, in: number };
     vis: { km: number, miles: number };
     pressure: { in: number, mb: number };
     wind: IWind;
-    condition: ICondition
+    condition: ICondition,
+    isDay: boolean,
+    lastUpdatedDate: string
 }

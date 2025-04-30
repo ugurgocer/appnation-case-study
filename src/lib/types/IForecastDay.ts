@@ -1,3 +1,4 @@
+import ICondition from "./ICondition";
 import ITemperature from "./ITemperature";
 
 export interface IForecastDay {
@@ -5,4 +6,5 @@ export interface IForecastDay {
     maxTemp: ITemperature;
     minTemp: ITemperature;
     avgTemp: ITemperature;
+    condition: ICondition;
 }

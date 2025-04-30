@@ -33,17 +33,17 @@ export default function SearchBar() {
     }
 
     return (
-        <div className="relative flex flex-1 h-14 max-w-150 gap-2 p-3 item-border text-slate-700">
+        <div className="relative flex flex-1 h-14 max-w-150 gap-2 p-3 item-border">
             <SearchIcon className="h-7 w-7 fill-slate-600" />
             <input
-                className="flex-1 h-8 focus:outline-none placeholder:text-slate-600"
+                className="flex-1 h-8 focus:outline-none placeholder:text-slate-400"
                 value={selected || value}
                 onInput={onChangeInput}
                 placeholder="Search a location"
             />
             {searchResult.length && !isLoading ? (
                 <LocationList
-                    className="bg-white absolute item-border left-0 right-0 top-16 z-50"
+                    className="bg-default absolute border rounded-lg border-primary/20 left-0 right-0 top-16 z-50"
                     items={searchResult}
                     isLoading={isLoading}
                     onClickItem={onClickItem}

@@ -1,10 +1,11 @@
 import { NextResponse } from "next/server";
 import IWeather from "@/lib/types/IWeather";
 import { IForecastDay } from "@/lib/types/IForecastDay";
+import { IDirections } from "@/lib/types/IDirections";
 
 export async function GET(request: Request, { params }: { params: { location: string } }) {
   try {
-    const id = params.location;
+    const { location: id } = await params;
 
     if (!id) {
       return NextResponse.json({}, { status: 400 });
@@ -22,31 +23,33 @@ export async function GET(request: Request, { params }: { params: { location: st
     const { current, location, forecast }  = await response.json();
 
     const mappedForecast = forecast.forecastday.map((f: any): IForecastDay => ({
-      avgTemp: { C: f.day.avgtemp_c, F: f.day.avgtemp_f },
+      avgTemp: { C: Math.round(f.day.avgtemp_c), F: Math.round(f.day.avgtemp_f) },
       date: f.date,
-      maxTemp: { C: f.day.maxtemp_c, F: f.day.maxtemp_f },
-      minTemp: { C: f.day.mintemp_c, F: f.day.mintemp_f }
+      maxTemp: { C: Math.round(f.day.maxtemp_c), F: Math.round(f.day.maxtemp_f) },
+      minTemp: { C: Math.round(f.day.mintemp_c), F: Math.round(f.day.mintemp_f) },
+      condition: f.day.condition
     }));
 
     const mappedResult: IWeather = {
       location: { ...location, id },
       current: {
         cloud: current.cloud,
-        temp: { C: current.temp_c, F: current.temp_f },
+        temp: { C: Math.round(current.temp_c), F: Math.round(current.temp_f) },
         condition: current.condition,
-        wind: { 
-          degree: current.wind_degree,
+        wind: {
           mph: current.wind_mph,
           kph: current.wind_kph,
-          dir: current.wind_dir
+          dir: IDirections[current.wind_dir as keyof typeof IDirections]
         },
-        dewPoint: { C: current.devpoint_c, F: current.devpoint_f },
-        feelsLike: { C: current.feelslike_c, F: current.feelslike_f },
-        heatIndex: { C: current.heatindex_c, F: current.heatindex_f },
+        feelsLike: { C: Math.round(current.feelslike_c), F: Math.round(current.feelslike_f) },
+        heatIndex: { C: Math.round(current.heatindex_c), F: Math.round(current.heatindex_f) },
         humidity: current.humidity,
         pressure: { in: current.pressure_in, mb: current.pressure_mb },
         vis: { km: current.vis_km, miles: current.vis_miles },
-        windchill: { C: current.windchill_c, F: current.windchill_f },
+        isDay: !!current.is_day,
+        lastUpdatedDate: current.last_updated,
+        precip: { in: current.precip_in, mm: current.precip_mm },
+        
       },
       forecast: mappedForecast
     }

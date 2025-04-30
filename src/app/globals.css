@@ -1,22 +1,26 @@
 @import "tailwindcss";
 
-:root {
-  --background: var(--color-slate-200);
-}
-
 @theme inline {
-  --color-background: var(--background);
+  --color-primary: #4b4fac;
+  --color-background: #e7f4fd;
+  --color-button: #64bbf7;
+  --color-default: #f9fafb;
 }
 
 body {
-  background: var(--background);
+  background: var(--color-background);
   font-family: Arial, Helvetica, sans-serif;
+  color: var(--color-slate-600)
 }
 
 .item-border {
-  @apply border rounded-lg bg-white border-slate-200 focus:border-slate-400 hover:border-slate-300;
+  @apply border rounded-lg bg-background border-primary/20 focus:border-primary hover:border-primary/50;
 }
 
 .selected-switch {
-  @apply bg-slate-700 text-slate-50;
+  @apply bg-primary text-background;
+}
+
+.selected-switch svg {
+  @apply fill-background;
 }

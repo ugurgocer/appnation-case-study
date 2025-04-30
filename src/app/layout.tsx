@@ -25,14 +25,12 @@ export default function RootLayout({
         <body
           className={`${defaultFont.className} antialiased`}
         >
-          <header className="flex items-center justify-between gap-4 p-6 bg-slate-400/20 shadow-sm">
+          <header className="flex items-center justify-between gap-4 p-6 bg-default shadow-sm">
             <SearchHistory />
             <SearchBar />
             <MetricSwitch />
           </header>
-          <main className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-6">
-            {children}
-          </main>
+          {children}
         </body>
       </html>
     </StoreProvider>
