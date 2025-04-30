@@ -2,13 +2,14 @@ import { NextResponse } from "next/server";
 import IWeather from "@/lib/types/IWeather";
 import { IForecastDay } from "@/lib/types/IForecastDay";
 import { IDirections } from "@/lib/types/IDirections";
+import errorCodes from "./_errorCodes";
 
 export async function GET(request: Request, { params }: { params: Promise<{ location: string }> }) {
   try {
     const { location: id } = await params;
 
     if (!id) {
-      return NextResponse.json({}, { status: 400 });
+      return NextResponse.json({ message: errorCodes[1003] }, { status: 400 });
     }
 
     const apiKey = process.env.WEATHER_API_KEY || "";
@@ -17,7 +18,8 @@ export async function GET(request: Request, { params }: { params: Promise<{ loca
     const response = await fetch(apiUrl);
 
     if (!response.ok) {
-      return NextResponse.json({}, { status: response.status });
+      const { error }: { error: { code: number } } = await response.json()
+      return NextResponse.json({ message: errorCodes[error.code] }, { status: response.status });
     }
 
     const { current, location, forecast }  = await response.json();
@@ -56,6 +58,6 @@ export async function GET(request: Request, { params }: { params: Promise<{ loca
 
     return NextResponse.json(mappedResult);
   } catch (error) {
-    return NextResponse.json({}, { status: 500 });
+    return NextResponse.json({ message: errorCodes[1000] }, { status: 500 });
   }
 }
