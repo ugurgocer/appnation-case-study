@@ -4,7 +4,6 @@ import "./globals.css";
 import { StoreProvider } from "./StoreProvider";
 import SearchBar from "./_component/SearchBar";
 import SearchHistory from "./_component/SearchHistory";
-import MetricSwitch from "./_component/MetricSwitch";
 
 const defaultFont = Onest({
   subsets: ["latin"],
@@ -25,10 +24,9 @@ export default function RootLayout({
         <body
           className={`${defaultFont.className} antialiased`}
         >
-          <header className="flex items-center justify-between gap-4 p-6 bg-default shadow-sm">
+          <header className="flex items-center gap-4 p-6 bg-default shadow-sm">
             <SearchHistory />
             <SearchBar />
-            <MetricSwitch />
           </header>
           {children}
         </body>

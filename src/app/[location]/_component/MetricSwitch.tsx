@@ -13,7 +13,6 @@ export default function MetricSwitch() {
         dispatch(toggle());
     }
     
-
     return (
         <div className="flex gap-2 relative">
             <button

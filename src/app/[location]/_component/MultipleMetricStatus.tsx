@@ -11,7 +11,7 @@ export default function MultipleMetricStatus(
     }
 
     return (
-        <div className="flex">
+        <div className="flex items-center justify-center">
             <span className="text-7xl h-20 w-fit content-end text-right">{data[selectedMetric]}</span>
             <ul className="flex flex-col justify-end text-sm">
                 {metrics.map((m) => (

@@ -5,5 +5,5 @@ import { IForecastDay } from "./IForecastDay";
 export default interface IWeather {
     location: ILocation;
     current: ICurrentWeather;
-    forecast: IForecastDay;
+    forecast: IForecastDay[];
 }

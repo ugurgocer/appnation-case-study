@@ -13,7 +13,7 @@ export async function GET(request: Request, { params }: { params: { location: st
 
     const apiKey = process.env.WEATHER_API_KEY || "";
     const apiBaseUrl = process.env.WEATHER_API_URL || "";
-    const apiUrl = `${apiBaseUrl}/forecast.json?key=${apiKey}&q=id:${id}`;
+    const apiUrl = `${apiBaseUrl}/forecast.json?key=${apiKey}&q=id:${id}&days=6`;
     const response = await fetch(apiUrl);
 
     if (!response.ok) {
@@ -22,7 +22,7 @@ export async function GET(request: Request, { params }: { params: { location: st
 
     const { current, location, forecast }  = await response.json();
 
-    const mappedForecast = forecast.forecastday.map((f: any): IForecastDay => ({
+    const mappedForecast = forecast.forecastday.slice(1).map((f: any): IForecastDay => ({
       avgTemp: { C: Math.round(f.day.avgtemp_c), F: Math.round(f.day.avgtemp_f) },
       date: f.date,
       maxTemp: { C: Math.round(f.day.maxtemp_c), F: Math.round(f.day.maxtemp_f) },
