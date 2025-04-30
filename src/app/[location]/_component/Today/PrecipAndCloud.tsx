@@ -1,10 +1,14 @@
 import { ICurrentWeather } from "@/lib/types/ICurrentWeather";
 import MultipleMetricStatus from "../MultipleMetricStatus";
+import CloudIcon from "../icons/Cloud";
 
 export default function PrecipAndCloud({ precip, cloud }: { precip: ICurrentWeather["precip"], cloud: number }) {
     return (
         <div className="row-span-1 bg-default rounded-lg shadow-sm p-6 justify-around">
-            <h5 className="text-xl font-semibold pb-2">Precipitation & Cloud</h5>
+            <h5 className="flex gap-3 items-center text-xl font-semibold pb-2">
+                <CloudIcon className="fill-primary" />
+                Precipitation & Cloud
+            </h5>
             <div className="flex justify-around">
                 <div className="flex flex-1 flex-col items-center gap-3">
                     <span className="font-extralight" >Precipitation</span>
