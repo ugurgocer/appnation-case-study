@@ -1,14 +1,15 @@
 import ILocation from "@/lib/types/ILocation";
 
-export default async function searchLocations(searchValue: string)  {
+export default async function searchLocations(searchValue: string) {
     if (!searchValue.trim()) return [];
 
     const response = await fetch(`/api/search?value=${searchValue}`);
+
     if (!response.ok) {
-      throw new Error("Search Error");
+      const { message }: { message: string } = await response.json();
+      throw new Error(message);
     }
   
-    const data: ILocation[] = await response.json();
-
-    return data || [];
+    const { result } : { result: ILocation[] } = await response.json();
+    return result || [];
 }

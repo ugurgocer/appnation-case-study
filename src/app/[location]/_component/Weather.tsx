@@ -10,13 +10,18 @@ import LocationIcon from "./icons/Location";
 import { notFound } from "next/navigation";
 
 export default function Weather({ id }: { id: string }) {
-  const { weather, isLoading } = useWeather(id);
+  const { weather, isLoading, error } = useWeather(id);
 
   if(isLoading) return <>Loading...</>;
 
-  if(!weather)
-    notFound();
+  if(error) {
+    throw error;
+  }
 
+  if(!weather) {
+    notFound()
+  }
+  
   return (
     <main className="flex flex-col gap-5 p-6">
       <div className="flex flex-col-reverse items-center md:flex-row md:items-start justify-between py-4 px-2 gap-3">

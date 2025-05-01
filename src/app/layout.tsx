@@ -4,6 +4,7 @@ import "./globals.css";
 import { StoreProvider } from "./StoreProvider";
 import SearchBar from "./_component/SearchBar";
 import SearchHistory from "./_component/SearchHistory";
+import Toaster from "./_component/Toaster";
 
 const defaultFont = Onest({
   subsets: ["latin"],
@@ -29,6 +30,7 @@ export default function RootLayout({
             <SearchBar />
           </header>
           {children}
+          <Toaster />
         </body>
       </html>
     </StoreProvider>
