@@ -50,7 +50,7 @@ export default function SearchHistory() {
     return (
         <div ref={popoverRef} className="relative h-14 w-14">
             <button
-                className={`item-border focus:outline-none cursor-pointer h-14 w-14 ${visible ? 'selected-switch' : ''}`}
+                className={`item-border focus:outline-none cursor-pointer h-14 w-14 ${visible ? 'selected-switch' : ''} ease-linear transition`}
                 onClick={toggleVisible}
             >
                 <HistoryIcon className="w-5 h-5 fill-slate-600 mx-auto"/>

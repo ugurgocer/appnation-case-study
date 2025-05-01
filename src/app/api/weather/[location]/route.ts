@@ -14,7 +14,7 @@ export async function GET(request: Request, { params }: { params: Promise<{ loca
 
     const apiKey = process.env.WEATHER_API_KEY || "";
     const apiBaseUrl = process.env.WEATHER_API_URL || "";
-    const apiUrl = `${apiBaseUrl}/forecast.json?key=${apiKey}&q${id}&days=6`;
+    const apiUrl = `${apiBaseUrl}/forecast.json?key=${apiKey}&q=id:${id}&days=6`;
     const response = await fetch(apiUrl);
 
     if (!response.ok) {
