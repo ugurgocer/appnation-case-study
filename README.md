@@ -76,7 +76,7 @@ WEATHER_API_URL=https://api.weatherapi.com/v1
 appnation-case-study/
 ├── src/
 │   ├── app/
-│   │   ├── page.tsx                # Search page layout
+│   │   ├── layout.tsx                # Search page layout
 │   │   ├── [location]/
 │   │   │   ├── page.tsx            # Weather detail page
 │   │   │   └── _component/Weather  # Weather display component
@@ -84,11 +84,10 @@ appnation-case-study/
 │   │       ├── search/             # Location search endpoint
 │   │       └── weather/[location]/ # Weather data endpoint
 │   ├── constants/                  # Static enums and mappings
-│   ├── lib/
-│   │   ├── hooks/                  # Custom React and SWR hooks
-│   │   ├── store/                  # Redux Toolkit slices and store
-│   │   └── types/                  # TypeScript interfaces and enums
-│   └── styles/                     # Global and utility styles
+│   └───lib/
+│       ├── hooks/                  # Custom React and SWR hooks
+│       ├── store/                  # Redux Toolkit slices and store
+│       └── types/                  # TypeScript interfaces and enums
 └── package.json                    # Project metadata and scripts
 ```
 ---
